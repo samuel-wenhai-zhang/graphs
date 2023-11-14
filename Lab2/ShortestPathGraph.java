@@ -1,7 +1,7 @@
 //(c) A+ Computer Science
 //www.apluscompsci.com
 
-//Name -
+//Name - Samuel Zhang
 
 import java.io.File;
 import java.io.IOException;
