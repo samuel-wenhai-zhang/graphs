@@ -22,7 +22,7 @@ public class BiDirectionalGraphRunner
 			if(test.contains(start)&&test.contains(stop))
 			   test.check(start,stop,new TreeSet<String>());
 
-			System.out.println(test);
+			System.out.println(start + " CONNECTS TO " + stop + " == " + test);
 		}
 	}
 }

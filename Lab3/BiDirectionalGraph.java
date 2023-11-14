@@ -19,20 +19,54 @@ public class BiDirectionalGraph
 
 	public BiDirectionalGraph(String line)
 	{
-		
+		map = new TreeMap<String, TreeSet<String>>();
+		found = false;
+
+		Scanner in = new Scanner(line);
+		while (in.hasNext()) {
+			String one = in.next();
+			String two = in.next();
+			if (!map.containsKey(one)) {
+				TreeSet<String> set = new TreeSet<String>();
+				set.add(two);
+				map.put(one, set);
+			}
+			else {
+				map.get(one).add(two);
+			}
+			if (!map.containsKey(two)) {
+				TreeSet<String> set = new TreeSet<String>();
+				set.add(one);
+				map.put(two, set);
+			}
+			else {
+				map.get(two).add(one);
+			}
+		}
 	}
 
 	public boolean contains(String name)
 	{
-		return true;
+		return map.containsKey(name);
 	}
 
-	public void check(String first, String second, TreeSet<String> placedUsed)
+	public void check(String first, String second, TreeSet<String> placesUsed)
 	{
+		if (map.get(first).contains(second)) {
+			found = true;
+		}
+		else {
+			for (String s: map.get(first)) {
+				if (!placesUsed.contains(s)) {
+					placesUsed.add(first);
+					check(s, second, placesUsed);
+				}
+			}
+		}
 	}
 
 	public String toString()
 	{
-		return "";
+		return found ? "YAH" : "NAH";
 	}
 }
