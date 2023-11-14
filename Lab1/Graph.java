@@ -58,9 +58,6 @@ public class Graph
 
 	public String toString()
 	{
-		if (found) {
-			return "yes";
-		}
-		return "no";
+		return found ? "yes" : "no";
 	}
 }
