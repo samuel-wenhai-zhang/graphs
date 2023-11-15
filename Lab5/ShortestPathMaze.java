@@ -10,6 +10,7 @@ public class ShortestPathMaze
 {
    private int[][] maze;
    private int shortest;
+   private int[][] shortestMaze;
 
 	public ShortestPathMaze()
 	{
@@ -19,6 +20,7 @@ public class ShortestPathMaze
 	{
 		maze = m;
 		shortest = Integer.MAX_VALUE;
+		shortestMaze = new int[maze.length][maze[0].length];
 	}
 
 
@@ -29,6 +31,11 @@ public class ShortestPathMaze
 			if (c == maze[r].length - 1) {
 				if (path < shortest) {
 					shortest = path;
+					for (int row = 0;  row < maze.length; row++) {
+						for (int col = 0; col < maze[row].length; col++) {
+							shortestMaze[row][col] = maze[row][col];
+						}
+					}
 				}
 			}
 			else {
@@ -49,13 +56,13 @@ public class ShortestPathMaze
 	public String toString()
 	{
 		String output="";
-		for (int r = 0; r < maze.length; r++) {
-			for (int c = 0; c < maze[r].length; c++) {
-				if (maze[r][c] == 2) {
+		for (int r = 0; r < shortestMaze.length; r++) {
+			for (int c = 0; c < shortestMaze[r].length; c++) {
+				if (shortestMaze[r][c] == 2) {
 					output += "P ";
 				}
 				else {
-					output += maze[r][c] + " ";
+					output += shortestMaze[r][c] + " ";
 				}
 			}
 			output += "\n";
