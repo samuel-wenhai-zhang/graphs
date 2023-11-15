@@ -22,11 +22,11 @@ public class Maze
 	public boolean checkForExitPath(int r, int c)
 	{
 		if (r >= 0 && r < maze.length && c >= 0 && c < maze[r].length && maze[r][c] == 1) {
-			maze[r][c] = 0;
 			if (c == maze[r].length - 1) {
 				return true;
 			}
 			else {
+				maze[r][c] = 0;
 				return checkForExitPath(r + 1, c) || checkForExitPath(r, c + 1) || checkForExitPath(r - 1, c) || checkForExitPath(r, c - 1);
 			}
 		}

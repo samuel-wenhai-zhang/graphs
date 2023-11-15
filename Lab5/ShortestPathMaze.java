@@ -25,15 +25,20 @@ public class ShortestPathMaze
 	public void checkForExitPath(int r, int c, int path)
 	{
 		if (r >= 0 && r < maze.length && c >= 0 && c < maze[r].length && maze[r][c] == 1) {
-			maze[r][c] = 0;
+			maze[r][c] = 2;
 			if (c == maze[r].length - 1) {
-				return true;
+				if (path < shortest) {
+					shortest = path;
+				}
 			}
 			else {
-				return checkForExitPath(r + 1, c) || checkForExitPath(r, c + 1) || checkForExitPath(r - 1, c) || checkForExitPath(r, c - 1);
+				checkForExitPath(r + 1, c, path + 1);
+				checkForExitPath(r, c + 1, path + 1);
+				checkForExitPath(r - 1, c, path + 1);
+				checkForExitPath(r, c - 1, path + 1);
 			}
+			maze[r][c] = 1;
 		}
-		return false;
 	}
 	
 	public int getShortestPath()
