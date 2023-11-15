@@ -49,6 +49,17 @@ public class ShortestPathMaze
 	public String toString()
 	{
 		String output="";
+		for (int r = 0; r < maze.length; r++) {
+			for (int c = 0; c < maze[r].length; c++) {
+				if (maze[r][c] == 2) {
+					output += "P ";
+				}
+				else {
+					output += maze[r][c] + " ";
+				}
+			}
+			output += "\n";
+		}
 		return output;
 	}
 }
